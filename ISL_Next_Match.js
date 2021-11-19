@@ -144,12 +144,10 @@ async function createWidget() {
             dateText.applyRelativeStyle()
         }
     }else if(matches[0].event_status == "Match Completed"){
-        addFormattedText(dateStack, "Match Completed", Font.regularSystemFont(9), null, 1, false);
+        addFormattedText(dateStack, "Match Completed", Font.semiboldSystemFont(9), null, 1, false);
     }else{
-        let dateText = dateStack.addDate(matchDate)
-        dateText.font = Font.semiboldSystemFont(9)
-        dateText.centerAlignText()
-        dateText.applyRelativeStyle()
+        addFormattedText(dateStack, `${matches[0].event_status} | ${matches[0].event_sub_status}`, Font.semiboldSystemFont(9), null, 1, false);
+
     }
     dateStack.addSpacer()
     leagueStack.addSpacer();
