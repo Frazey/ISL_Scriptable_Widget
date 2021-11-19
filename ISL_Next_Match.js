@@ -8,7 +8,7 @@ widgetSettings = {
     
     //Customize Below:
     dateStyle: "date", // Date Style: "countdown" or "date" (date = Novemeber 19, 2021 and countdown = 7 days, 4 hrs)
-    updateAfter: 15, // Update widget after 15 minutes at end of match (to get more time to see score before showing next match details)
+    updateAfter: 35, // Update widget after 15 minutes at end of match (to get more time to see score before showing next match details)
     //-----------------//
 
     placeholderImage: "default.png",
