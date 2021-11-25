@@ -115,16 +115,19 @@ async function createWidget() {
             leagueTableRowStack.addSpacer()
       }
       leagueDateStack.centerAlignContent();
-      if(matches[i].event_status == "Yet to begin"){
-          let dateText = leagueDateStack.addDate(matchDate)
-          dateText.font = Font.semiboldSystemFont(9)
-          dateText.centerAlignText()
+      if(matches[i].event_status.toLowerCase() == "yet to begin"){ 
           if (widgetSettings.dateStyle == "date"){
-              dateText.applyDateStyle()
+            let dateFormatter = new DateFormatter()
+            dateFormatter.dateFormat = "E, d MMM, h:m a"
+            let matchDateStr = dateFormatter.string(matchDate)
+            addFormattedText(leagueDateStack, matchDateStr, Font.semiboldSystemFont(8), null, 2, true);
           }else{
-              dateText.applyRelativeStyle()
+            let dateText = leagueDateStack.addDate(matchDate)
+            dateText.font = Font.semiboldSystemFont(9)
+            dateText.centerAlignText()
+            dateText.applyRelativeStyle()
           }
-      }else if(matches[i].event_status == "Match Completed"){
+      }else if(matches[i].event_status.toLowerCase() == "match completed"){
           addFormattedText(leagueDateStack, "Match Completed", Font.semiboldSystemFont(9), null, 1, false);
       }else{
           addFormattedText(leagueDateStack, `${matches[i].event_status} | ${matches[i].event_sub_status}`, Font.semiboldSystemFont(9), null, 1, false);
